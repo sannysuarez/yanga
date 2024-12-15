@@ -1,1 +1,5 @@
 env/
+*pyc
+instance/
+trash/
+test/
