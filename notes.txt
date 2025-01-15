@@ -1,0 +1,3 @@
+----Major colors------
+#206606 Green
+#FFFFFF White
