@@ -1,20 +1,53 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h1>{% block title %}Register{% endblock %}</h1>
+<div class="text-center text-capitalize fs-3">{% block title %}Register{% endblock %}</div>
 {% endblock %}
 
 {% block content %}
-<form method="post">
-    <label for="name">Name</label>
-    <input name="name" id="name" required>
+<div class="container d-flex justify-content-center">
+<form method="post" class="w-50">
+     <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="firstname" class="col-form-label">First Name</label>
+        </div>
+        <div class="col-auto">
+            <input type="text" id="firstname" class="form-control" required>
+        </div>
+    </div>
 
-    <label for="email">Email</label>
-    <input type="email" id="email" required>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="lastname" class="col-form-label">Last Name</label>
+        </div>
+        <div class="col-auto">
+            <input type="text" id="lastname" class="form-control" >
+        </div>
+    </div>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="email" class="col-form-label">Email address</label>
+        </div>
+        <div class="col-auto">
+            <input type="email" id="email" class="form-control" required>
+        </div>
+    </div>
 
-    <input type="submit" value="Submit">
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="password" class="col-form-label">Password</label>
+        </div>
+        <div class="col-auto">
+            <input type="password" id="password" class="form-control" aria-describedby="passwordHelpInline" required>
+        </div>
+        <div class="col-auto">
+            <span id="passwordHelpInline" class="form-text">
+                Must be 8-20 characters long.
+            </span>
+        </div>
+    </div>
+    <input class="form-control  btn btn-success" type="submit" value="Submit">
 </form>
+</div>
 {% endblock %}

@@ -1,18 +1,31 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h1>{% block title %}Log In{% endblock%} </h1>
+<div class="text-center text-capitalize fs-3">{% block title %}Log In{% endblock%} </div>
 {% endblock %}
 
 {% block content %}
-<form method="post">
-    <label for="email">Email</label>
-    <input name="email" id="email" required>
+<div class="container d-flex justify-content-center mt-5">
+<form method="post" class="w-50">
+    <div class="input-group mb-3">
+        <label class="input-group form-label" for="email">Email</label>
+        <span class="input-group-text" id="basic-addon1"><i class="bi bi-envelope-fill"></i></span>
+        <input class="form-control" type="email" name="email" id="email" placeholder="Enter Email" required>
+    </div>
+    <div class="input-group mb-3">
+        <label class="input-group form-label" for="password">Password</label>
+        <span class="input-group-text" id="basic-addon2"><i class="bi bi-lock-fill"></i></span>
+        <input class="form-control" type="password"  name="password" id="password" placeholder="Enter Password" required>
+    </div>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
+    <div class="checkbox mb-3">
+        <label><input type="checkbox"> Remember me</label>
+    </div>
 
-    <input type="submit" value="Log in">
-    <a href="#">Forgotten password?</a>
+
+    <input type="submit" value="Log in" class="btn btn-success fw-semibold form-control mb-4">
+    <div class="text-center mb-3"><a  class="text-decoration-underline" href="#">Forgotten password?</a></div>
+    <div class="text-center">New member? <a  class="text-center" href="#">sign up</a></div>
 </form>
+</div>
 {% endblock %}

@@ -1,4 +1,6 @@
 import os
+from operator import index
+
 from flask import Flask
 
 def create_app(test_config=None):
@@ -28,10 +30,9 @@ def create_app(test_config=None):
     from . import auth
     app.register_blueprint(auth.bp)
 
-    @app.route('/')
-    def home():
-        return 'This is Yanga...'
-
+    from . import user
+    app.register_blueprint(user.bp)
+    app.add_url_rule('/', endpoint='index')
 
     return app
 
