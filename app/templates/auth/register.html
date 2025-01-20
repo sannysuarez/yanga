@@ -7,47 +7,55 @@
 {% block content %}
 <div class="container d-flex justify-content-center">
 <form method="post" class="w-50">
-     <div class="row g-3 align-items-center">
-        <div class="col-auto">
-            <label for="firstname" class="col-form-label">First Name</label>
-        </div>
-        <div class="col-auto">
-            <input type="text" id="firstname" class="form-control" required>
-        </div>
+    <div class="input-group mb-3">
+        <label class="input-group form-label fst-italic" for="firstname">First Name</label>
+        <input class="form-control" type="text" name="firstname" id="firstname"  required>
+    </div>
+    <div class="input-group mb-3">
+        <label class="input-group form-label fst-italic" for="secondname">Second Name</label>
+        <input class="form-control" type="text" name="secondname" id="secondname"  placeholder="(optional)">
     </div>
 
-    <div class="row g-3 align-items-center">
-        <div class="col-auto">
-            <label for="lastname" class="col-form-label">Last Name</label>
-        </div>
-        <div class="col-auto">
-            <input type="text" id="lastname" class="form-control" >
-        </div>
+    <div class="input-group mb-3">
+        <label class="input-group form-label fst-italic" for="email">Email</label>
+        <input class="form-control" type="email" name="email" id="email"  required>
     </div>
 
-    <div class="row g-3 align-items-center">
-        <div class="col-auto">
-            <label for="email" class="col-form-label">Email address</label>
-        </div>
-        <div class="col-auto">
-            <input type="email" id="email" class="form-control" required>
-        </div>
+    <div class="input-group mb-3">
+        <label class="input-group form-label fst-italic" for="tel">Phone Number</label>
+        <span class="input-group-text" id="tel">+234</span>
+        <input type="tel" class="form-control">
     </div>
 
-    <div class="row g-3 align-items-center">
-        <div class="col-auto">
-            <label for="password" class="col-form-label">Password</label>
-        </div>
-        <div class="col-auto">
-            <input type="password" id="password" class="form-control" aria-describedby="passwordHelpInline" required>
-        </div>
-        <div class="col-auto">
-            <span id="passwordHelpInline" class="form-text">
-                Must be 8-20 characters long.
-            </span>
-        </div>
+    <div class="input-group mb-3">
+       <label for="state" class="input-group form-label fst-italic">State</label>
+        <select id="state" class="form-select">
+            <option selected>Choose...</option>
+            <option>...</option>
+       </select>
     </div>
-    <input class="form-control  btn btn-success" type="submit" value="Submit">
+
+    <div class="input-group mb-3">
+       <label for="state" class="input-group form-label fst-italic">Gender</label>
+        <select id="gender" class="form-select">
+            <option selected>Choose...</option>
+            <option>Male</option>
+            <option>Female</option>
+       </select>
+    </div>
+
+
+
+    <div class="input-group mb-3">
+        <label class="input-group form-label fst-italic" for="password">Password</label>
+        <input class="form-control" type="password" name="password" id="password"  required>
+    </div>
+
+    <div class="input-group mb-3">
+        <label class="input-group form-label fst-italic" for="password">Re-type password</label>
+        <input class="form-control" type="password" name="retype" id="retype"  required>
+    </div>
+      <input type="submit" value="Submit" class="btn btn-success fw-semibold form-control mb-4">
 </form>
 </div>
 {% endblock %}

@@ -1,0 +1,15 @@
+
+ .login-divider{
+   font-size: 30px;
+   display: flex;
+   align-items: center;
+   }
+
+ .login-divider::before,
+ .login-divider::after{
+   flex: 1;
+   content: '';
+   padding: 3px;
+   background-color: red;
+   margin: 5px;
+   }
