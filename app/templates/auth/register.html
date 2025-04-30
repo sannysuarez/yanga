@@ -12,8 +12,8 @@
         <input class="form-control" type="text" name="firstname" id="firstname"  required>
     </div>
     <div class="input-group mb-3">
-        <label class="input-group form-label fst-italic" for="secondname">Second Name</label>
-        <input class="form-control" type="text" name="secondname" id="secondname"  placeholder="(optional)">
+        <label class="input-group form-label fst-italic" for="lastname">Last Name</label>
+        <input class="form-control" type="text" name="lastname" id="lastname"  placeholder="(optional)">
     </div>
 
     <div class="input-group mb-3">
@@ -24,21 +24,22 @@
     <div class="input-group mb-3">
         <label class="input-group form-label fst-italic" for="tel">Phone Number</label>
         <span class="input-group-text" id="tel">+234</span>
-        <input type="tel" class="form-control">
+        <input type="tel" name="tel" class="form-control">
     </div>
 
     <div class="input-group mb-3">
        <label for="state" class="input-group form-label fst-italic">State</label>
-        <select id="state" class="form-select">
-            <option selected>Choose...</option>
-            <option>...</option>
+        <select id="state" name="state" class="form-select" required>
+            <option value="" disabled selected hidden>Choose...</option>
+            {% for code, state in state %}
+            <option value="{{ state }}">{{ state }}</option>
+            {% endfor %}
        </select>
     </div>
 
     <div class="input-group mb-3">
        <label for="state" class="input-group form-label fst-italic">Gender</label>
-        <select id="gender" class="form-select">
-            <option selected>Choose...</option>
+        <select id="gender" name="gender" class="form-select" required>
             <option>Male</option>
             <option>Female</option>
        </select>

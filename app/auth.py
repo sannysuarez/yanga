@@ -2,11 +2,13 @@ import functools
 from flask import (Blueprint, flash, g, redirect, render_template, request, session, url_for)
 from werkzeug.security import check_password_hash, generate_password_hash
 from app.db import get_db
+from app.utils import get_state
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
+    state = get_state()
     if request.method == 'POST':
         firstname = request.form['firstname']
         lastname = request.form['lastname']
@@ -34,7 +36,7 @@ def register():
             else:
                 return redirect(url_for("auth.login"))
         flash(error)
-    return render_template('auth/register.html')
+    return render_template('auth/register.html', state=state)
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
