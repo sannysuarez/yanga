@@ -46,7 +46,7 @@ def login():
         error = None
         user = db.execute('SELECT * FROM user WHERE email = ?', (email,)).fetchone()
         # Check if user exists and password is valid
-        if email is None:
+        if not user:
             error = 'Invalid Email or Password!' # General error for security reasons
         elif not check_password_hash(user['password'], password): # Verify hashed password
             error = 'Invalid Email or Password!' # Same error to avoid giving clues.
