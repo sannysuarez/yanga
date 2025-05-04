@@ -29,10 +29,10 @@
 
     <div class="input-group mb-3">
        <label for="state" class="input-group form-label fst-italic">State</label>
-        <select id="state" name="state" class="form-select" required>
+        <select id="state" name="state_name" class="form-select" required>
             <option value="" disabled selected hidden>Choose...</option>
-            {% for code, state in state %}
-            <option value="{{ state }}">{{ state }}</option>
+            {% for code, state_name in state %}
+            <option value="{{ code }}">{{ state_name }}</option>
             {% endfor %}
        </select>
     </div>

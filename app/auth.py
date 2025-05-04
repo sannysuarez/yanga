@@ -8,13 +8,12 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
-    state = get_state()
     if request.method == 'POST':
         firstname = request.form['firstname']
         lastname = request.form['lastname']
         email = request.form['email']
         tel = request.form['tel']
-        state = request.form['state']
+        state = request.form['state_name']
         gender = request.form['gender']
         password = request.form['password']
         db = get_db()
@@ -34,8 +33,10 @@ def register():
             except db.IntegrityError:
                 error = f"{email} is already registered."
             else:
+                flash('Successfully created! You can now log in.', "success")
                 return redirect(url_for("auth.login"))
-        flash(error)
+        flash(error, "error")
+    state = get_state()
     return render_template('auth/register.html', state=state)
 
 @bp.route('/login', methods=('GET', 'POST'))
