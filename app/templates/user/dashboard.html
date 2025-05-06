@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% block title%} {{ g.user['firstname'] }} {{ g.user['lastname'] }} {% endblock %}
+{% endblock %}
+
+{% block content %}
+{{ g.user['email'] }}<br>
+{{ g.user['tel'] }}<br>
+{{ g.user['state'] }}<br>
+{{ g.user['gender'] }}<br>
+<h2> This is yanga</h2>
+{% endblock %}
