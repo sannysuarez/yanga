@@ -1,7 +1,6 @@
 import os
-from operator import index
-
-from flask import Flask
+from flask import Flask, g, session
+from app.db import get_db
 
 def create_app(test_config=None):
     # Create and configure the App

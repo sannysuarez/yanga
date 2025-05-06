@@ -29,7 +29,7 @@
             </form>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href=" {{ url_for('user.index') }}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -42,16 +42,22 @@
                         <li><a class="dropdown-item" href="#">Palmpay</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">select all</a> </li>
+                        {% if g.user %}
+                        <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Sign out</a> </li>
+                        {% endif %}
                     </ul>
                 </li>
 
-
                 <div class="btn-group">
-                    <a class="btn btn-success fw-bold" role="button" href="{{ url_for('auth.login') }}">Sign in</a>
-                    <span class="vr mx-1"></span>
-                    <a class="btn btn-success fw-bold" href="{{ url_for('auth.register') }}">Sign up</a>
+                    {% if g.user %}
+                       <a class="btn btn-success fw-bold" role="button" href="#">{{ g.user['firstname'].title() }} {{ g.user['lastname'].title() }}</a>
+                       <img src="{{ url_for('static', filename='uploads/' ~ g.user['profile_pic']) }}" alt="Profile Picture" class="rounded-circle mx-3" style="width: 40px; height: 40px; object-fit: cover;">
+                    {% else %}
+                       <a class="btn btn-success fw-bold" role="button" href="{{ url_for('auth.login') }}">Sign in</a>
+                       <span class="vr mx-1"></span>
+                       <a class="btn btn-success fw-bold" href="{{ url_for('auth.register') }}">Sign up</a>
+                    {% endif %}
                 </div>
-
 
             </ul>
         </div>

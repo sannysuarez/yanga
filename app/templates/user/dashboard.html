@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  {% block title%} {{ g.user['firstname'].title() }} {{ g.user['lastname'].title() }} {% endblock %}
+  {% block title%}
+     {% if g.user %}
+          {{ g.user['firstname'].title() }} {{ g.user['lastname'].title() }}
+     {% endif %}
+  {% endblock %}
 {% endblock %}
 
 {% block content %}
