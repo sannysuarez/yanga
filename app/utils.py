@@ -1,14 +1,11 @@
 import re
 
-''' Reject if name has spaces or special characters (allow only letters) and control the Max length. '''
-def is_valid_name(name, max_length=15):
-    if len(name) > max_length:
-        return False, "Name must be at most {max_length} characters."
-    if " " in name:
-        return False, f"Name cannot contain spaces."
-    if not re.match("^[a-zA-Z'-]+$", name): # Allows letters, apostrophes, and hyphens.
-        return False, "Name contains invalid characters."
-    return True, "" # No error
+''' Clean user input  '''
+def clean_name_input(name, max_lenght=15):
+    name = name.strip() # Remove leading/trailing whitespace
+    name = re.sub(r"[^a-zA-Z\-']", '', name) # Keep letters, hyphens and apostrophes; remove other special characters and digits.
+    name = name.lower()
+    return name[:max_lenght] # Truncate to Max_lenght
 
 def get_state():
     return [

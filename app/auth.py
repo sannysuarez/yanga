@@ -2,20 +2,20 @@ import functools
 from flask import (Blueprint, flash, g, redirect, render_template, request, session, url_for)
 from werkzeug.security import check_password_hash, generate_password_hash
 from app.db import get_db
-from app.utils import get_state
+from app.utils import get_state, clean_name_input
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
-        firstname = request.form['firstname'].lower()
-        lastname = request.form['lastname'].lower()
-        email = request.form['email'].lower()
-        tel = request.form['tel']
-        state = request.form['state_name']
-        gender = request.form['gender']
-        password = request.form['password']
+        firstname = clean_name_input(request.form.get('firstname'))
+        lastname = clean_name_input(request.form.get('lastname'))
+        email = request.form.get('email').lower().strip()
+        tel = request.form.get('tel').strip()
+        state = request.form.get('state_name')
+        gender = request.form.get('gender')
+        password = request.form.get('password').strip()
         db = get_db()
         error = None
 
