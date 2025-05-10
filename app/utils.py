@@ -7,6 +7,15 @@ def clean_name_input(name, max_lenght=15):
     name = name.lower()
     return name[:max_lenght] # Truncate to Max_lenght
 
+def is_valid_email(email):
+    """
+    Matches Email pattern using regular expressions. (covers most common cases).
+    ^[a-zA-Z0-9._%+-]+: Allows common characters in the local part (before @)
+    @[a-zA-Z0-9.-]+: Accepts domain characters (letters, numbers, hyphen, dot)
+    \.[a-zA-Z]{2,}$: Requires a top-level domain of at least 2 letters (e.g., .com, .org, .ng)
+    """
+    return re.match(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", email) is not None
+
 def get_state():
     return [
         ("FC","Abuja (FCT)"),
@@ -47,4 +56,3 @@ def get_state():
         ("YO", "Yobe"),
         ("ZA", "Zamfara"),
     ]
-
