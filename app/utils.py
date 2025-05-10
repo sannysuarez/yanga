@@ -1,3 +1,15 @@
+import re
+
+''' Reject if name has spaces or special characters (allow only letters) and control the Max length. '''
+def is_valid_name(name, max_length=15):
+    if len(name) > max_length:
+        return False, "Name must be at most {max_length} characters."
+    if " " in name:
+        return False, f"Name cannot contain spaces."
+    if not re.match("^[a-zA-Z'-]+$", name): # Allows letters, apostrophes, and hyphens.
+        return False, "Name contains invalid characters."
+    return True, "" # No error
+
 def get_state():
     return [
         ("FC","Abuja (FCT)"),
@@ -38,3 +50,4 @@ def get_state():
         ("YO", "Yobe"),
         ("ZA", "Zamfara"),
     ]
+
