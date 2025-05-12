@@ -2,7 +2,7 @@ import functools
 from flask import (Blueprint, flash, g, redirect, render_template, request, session, url_for)
 from werkzeug.security import check_password_hash, generate_password_hash
 from app.db import get_db
-from app.utils import get_state, clean_name_input, is_valid_email
+from app.utils import get_state, clean_name_input, is_valid_email, clean_phone_number
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -19,6 +19,8 @@ def register():
             error = "Invalid email format!"
 
         tel = request.form.get('tel').strip()
+        tel = clean_phone_number(tel)
+
         state = request.form.get('state_name')
         gender = request.form.get('gender')
         password = request.form.get('password').strip()

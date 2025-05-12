@@ -16,6 +16,15 @@ def is_valid_email(email):
     """
     return re.match(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", email) is not None
 
+def clean_phone_number(tel, max_length=11):
+    tel = re.sub(r'\D', '', tel) # Remove all non-digit characters
+    if len(tel) == 11 and tel.startswith('0'):
+        return tel
+    elif len(tel) == 10 and not tel.startswith('0'):
+        return '0' + tel
+    else:
+        return tel[:max_length]
+
 def get_state():
     return [
         ("FC","Abuja (FCT)"),
