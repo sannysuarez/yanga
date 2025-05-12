@@ -41,6 +41,7 @@ def register():
                 error = f"{email} is already registered."
             else:
                 flash('Successfully created! You can now log in.', "success")
+                print(state)
                 return redirect(url_for("auth.login"))
         flash(error, "error")
     state = get_state()
@@ -69,6 +70,7 @@ def login():
 
         # pass the error to flash for the user
         flash(error, "error")
+
     return render_template('auth/login.html', flash=flash)
 
 @bp.before_app_request
