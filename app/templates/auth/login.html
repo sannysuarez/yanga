@@ -30,7 +30,7 @@
 
     <input type="submit" value="Log in" class="btn btn-success fw-semibold form-control mb-4">
     <div class="text-center mb-3"><a  class="text-decoration-underline" href="#">Forgotten password?</a></div>
-    <div class="text-center">New member? <a  class="text-center" href="#">sign up</a></div>
+    <div class="text-center">New member? <a  class="text-center" href="{{ url_for('auth.register') }}">sign up</a></div>
 </form>
 </div>
 {% endblock %}

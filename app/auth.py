@@ -24,14 +24,23 @@ def register():
         state = request.form.get('state_name')
         gender = request.form.get('gender')
         password = request.form.get('password').strip()
+        re_type = request.form.get('retype').strip()
 
 
         if not firstname:
             error = 'First Name required!'
         elif not email:
             error = 'Email is required!'
+        elif not state:
+            error = 'Please select your state!'
+        elif not gender:
+            error = " select your gender!"
         elif not password:
             error = 'password is required!'
+        elif not re_type:
+            error = 'matching password is required!'
+        elif re_type != password:
+            error = 'password not match!'
 
         if error is None:
             try:
