@@ -41,6 +41,8 @@ def register():
             error = 'matching password is required!'
         elif re_type != password:
             error = 'password not match!'
+        elif len(password) < 8:
+            error = 'password must be atleast 8-char long!'
 
         if error is None:
             try:
