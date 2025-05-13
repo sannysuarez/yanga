@@ -51,11 +51,16 @@
                 <div class="btn-group">
                     {% if g.user %}
                        <a class="btn btn-success fw-bold" role="button" href="#">{{ g.user['firstname'].title() }} {{ g.user['lastname'].title() }}</a>
-                       <img src="{{ url_for('static', filename='uploads/' ~ g.user['profile_pic']) }}" alt="Profile Picture" class="rounded-circle mx-3" style="width: 40px; height: 40px; object-fit: cover;">
                     {% else %}
                        <a class="btn btn-success fw-bold" role="button" href="{{ url_for('auth.login') }}">Sign in</a>
                        <span class="vr mx-1"></span>
                        <a class="btn btn-success fw-bold" href="{{ url_for('auth.register') }}">Sign up</a>
+                    {% endif %}
+
+                    {% if g.user and g.user['profile_pic']%}
+                        <img src="{{ url_for('static', filename='uploads/profile_pictures/' ~ g.user['profile_pic']) }}" alt="Profile Picture" class="rounded-circle mx-3" style="width: 40px; height: 40px; object-fit: cover;">
+                           {% else %}
+                        <img src="{{ url_for('static', filename='uploads/profile_pictures/avater.png' ~ g.user['profile_pic']) }}" alt="Profile Picture" class="rounded-circle mx-3" style="width: 40px; height: 40px; object-fit: cover;">
                     {% endif %}
                 </div>
 
